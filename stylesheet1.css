@@ -1,0 +1,29 @@
+﻿input[type=text] {
+    width: 33.0%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    display: inline;
+}
+.one {
+    background-color: red;
+}
+.two {
+    background-color: yellow;
+}
+.three {
+    background-color: green;
+}
+#msg {
+    text-align: center;
+}
+#btn {
+    width: 10%; /* setting the width */
+    margin: 0 auto; /*this together with display: block: centers it*/
+    border: solid 8px black;
+    padding: 20px 20px;
+    display: block;
+    font-size: 20px;
+    background-color: lightgreen;
+}
