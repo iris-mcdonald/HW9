@@ -69,33 +69,9 @@
 
         function startProcess()
         {
+            checkButtonHover();
+                   
             
-            $("#btn").hover(function(){
-                alert("You entered hover!");
-                $("#btn").text("SPIN NOW");
-                $("#btn").css(
-                    {
-                    'background-color': 'darkgreen'
-                    })
-            });
-            /*function(){
-            alert("Bye! You now leave p1!");
-            });*/
-
-            /*debugger;*/
-                
-            /*$('#btn').on('hover', function()
-            {
-                alert('hovering caught');
-            });*/
-            /*{
-                $('#btn').css(
-                    {'background-color': 'darkgreen',
-                     'font-size': '20px'
-                     });
-                $('#btn').text('SPIN NOW');
-            });*/
-
             var array_BoxColors = [0,0,0,0];//declare array for storing box color results
 
             for (var box = 1; box <= 3; box++)//process the three text boxes
@@ -104,7 +80,7 @@
                                
                 for ( var i = 1; i <= 10; i++)//run change box color function 10X 
                 {
-                    var colorOfBox = chgBoxColor(boxId);//returns 1,2,or 3 representing which color set
+                    var colorOfBox = chgBoxColor(boxId);//returns 1,2,or 3 based on what color set
                     array_BoxColors[box] = colorOfBox;                             
                 } 
             }//end of process text box loop
@@ -116,9 +92,23 @@
                             
         }//end of startProcess
 
+    function checkButtonHover() 
+    {
+            $("#btn").hover(function()
+            {
+                alert("You entered hover!");
+                $("#btn").text("SPIN NOW");
+                $("#btn").css(
+                    {
+                    'background-color': 'darkgreen'
+                    })
+            });//end of button hover JQuery event handler    
+    }//end of checkButtonHover      
     
-       
-    
+    function onExit()
+    {
+        return "Goodbye!...";//this never displays in W3Schools, or in my code!
+    }
            
 $(document).ready(function()
 {
