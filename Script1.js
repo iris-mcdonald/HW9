@@ -1,4 +1,65 @@
-    function chgBoxColor1()
+$(document).ready(function () {
+    $("#btnclose").click(function () {
+        $("*").fadeOut(2000);
+    });
+    /*$("p").hide().delay(2000).text("Goodbye").fadeIn(2000); This doesn't work*/
+});
+
+$(window).on('beforeunload', function () {
+    return 'Are you sure you want to leave?';
+});
+
+function onExit() {
+    $("p").text("Goodbye");
+    return "Goodbye!...";//this mgs never displays in W3Schools, or in my code!
+}
+
+var runstartProcess = false;//indicator for whether or not startProcess has run
+
+$(document).ready(function () {
+    $("#btn").click(function () {
+        console.log("try again clicked. Run startProcess");
+        runstartProcess = true;
+        startProcess();
+    });
+    /*$("p").hide().delay(2000).text("Goodbye").fadeIn(2000); This doesn't work*/
+});
+
+$(document).ready(function () {
+    console.log("ready!");
+    if (runstartProcess == false) {
+        console.log("run startProcess")
+        startProcess();
+    } else {
+        console.log(" ")
+    }
+});
+
+function startProcess() {
+    checkButtonHover();
+
+    for (var i = 1; i <= 10; i++)//change text box1 class (i.e. bg color) 10X
+    {
+        var boxColor1 = chgBoxColor1();
+    };
+
+    for (var i = 1; i <= 10; i++)//change text box2 class (i.e.bg color) 10X
+    {
+        var boxColor2 = chgBoxColor2();
+    };
+
+    for (var i = 1; i <= 10; i++)//change text box3 class (i.e. bg color) 10X
+    {
+        var boxColor3 = chgBoxColor3();
+    };
+
+
+    setWinOrLoseMsg(boxColor1, boxColor2, boxColor3);
+
+}//end of startProcess
+
+
+function chgBoxColor1()
         {
             var result = 0;
             while ((result == 0) || (result > 3)) {//run until you get a 1, 2, or 3
@@ -60,7 +121,7 @@
             } else {
                         $("#c").removeClass();
                         $("#c").addClass("three");                     
-            };
+            }
 
          console.log(" box 3 result: " + result);
          return result;
@@ -87,30 +148,6 @@
             }
     }//end of setWinOrLoseMsg
 
-    function startProcess()
-    {
-            checkButtonHover();
-            
-            for  (var i=1; i <= 10; i++)
-            {
-                var boxColor1 = chgBoxColor1();
-            };
-            
-            for  (var i=1; i <= 10; i++)
-            {
-                var boxColor2 = chgBoxColor2();
-            };
-
-            for  (var i=1; i <= 10; i++)
-            {
-                var boxColor3 = chgBoxColor3();
-            };
-                 
-
-           setWinOrLoseMsg(boxColor1, boxColor2, boxColor3); 
-                   
-    }//end of startProcess
-
     function checkButtonHover() 
     {
             $("#btn").hover(function()
@@ -123,34 +160,6 @@
             });//end of button hover JQuery event handler    
     }//end of checkButtonHover      
 
-$(document).ready(function () {
-    $("button").click(function () {
-        $("*").fadeOut(2000);
-        });
-        /*$("p").hide().delay(2000).text("Goodbye").fadeIn(2000);*/
-    });
-    
-$(window).on('beforeunload', function () {
-    return 'Are you sure you want to leave?';
-});
-
-
-     
-    function onExit()
-    {
-        $("p").text("Goodbye");
-        return "Goodbye!...";//this mgs never displays in W3Schools, or in my code!
-    }
-           
-$(document).ready(function()
-{
-    console.log( "ready!" );
-    startProcess();
-}    
-);
-    
-   
-    
 
 
 
