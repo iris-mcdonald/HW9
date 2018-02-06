@@ -38,6 +38,7 @@
 }
 #closemsg {
     font-size: 50px;
-    display: block;
+    display: inline;
     margin: 0 auto;
+    display: none;
 }

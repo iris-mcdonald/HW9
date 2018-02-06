@@ -1,6 +1,8 @@
+
 $(document).ready(function () {
     $("#btnclose").click(function () {
-        $("*").fadeOut(2000);
+        $("#page").fadeOut(2000);
+        $("#closemsg").delay(3000).show(2000);
     });
     /*$("p").hide().delay(2000).text("Goodbye").fadeIn(2000); This doesn't work*/
 });
@@ -22,7 +24,7 @@ $(document).ready(function () {
         runstartProcess = true;
         startProcess();
     });
-    /*$("p").hide().delay(2000).text("Goodbye").fadeIn(2000); This doesn't work*/
+    
 });
 
 $(document).ready(function () {
