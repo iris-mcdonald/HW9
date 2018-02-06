@@ -60,9 +60,9 @@
             } else {
                         $("#c").removeClass();
                         $("#c").addClass("three");                     
-            }
-            console.log(" box 3 result: " + result);
-                    
+            };
+
+         console.log(" box 3 result: " + result);
          return result;
 
     }//end of chgBoxColor3
