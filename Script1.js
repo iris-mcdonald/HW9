@@ -1,102 +1,120 @@
-    function setBoxId(box) 
-    {
-        var result = ' ';
-        if (box == 1) {
-          result = "a";
-        } else if (box == 2) {
-          result = "b";
-        } else {
-          result = "c";
-        }
-        return result;
-    }//end of setBoxId
-
-        function chgBoxColor(boxId)
+    function chgBoxColor1()
         {
+            var result = 0;
+            while ((result == 0) || (result > 3)) {//run until you get a 1, 2, or 3
+                var result = myRandomNumber();
+            }
+            
+            if(result == 1){
+                        $("#a").removeClass();
+                        $("#a").addClass("one"); 
+            } else if(result == 2){
+                        $("#a").removeClass(); 
+                        $("#a").addClass("two");
+            } else {
+                        $("#a").removeClass();
+                        $("#a").addClass("three");                     
+            }
+            console.log(" box 1 result: " + result);
+                    
+         return result;
+
+        }//end of chgBoxColor1
+
+    function chgBoxColor2()
+    {
+            var result = 0;
+            while ((result == 0) || (result > 3)) {//run until you get a 1,2,3
+                var result = myRandomNumber();
+            }
+            
+            if(result == 1){
+                        $("#b").removeClass();
+                        $("#b").addClass("one"); 
+            } else if(result == 2){
+                        $("#b").removeClass(); 
+                        $("#b").addClass("two");
+            } else {
+                        $("#b").removeClass();
+                        $("#b").addClass("three");                     
+            }
+            console.log(" box 2 result: " + result);
+                    
+         return result;
+
+    }//end of chgBoxColor2
+
+    function chgBoxColor3()
+    {
             var result = 0;
             while ((result == 0) || (result > 3)) {//run for each box
                 var result = myRandomNumber();
             }
-
-            /*assigns class name-in css class assigns background color*/
-            /*debugger;*/
-            /*alert("result = " + result);*/
             
-            
-            switch (result)
-            {
-                case 1:
-                    /*document.write('Case One: ' + result);*/
-                    document.getElementById(boxId).className = "one";
-                    break;
-                case 2:
-                    /*document.write('Case Two: ' + result);*/
-                    document.getElementById(boxId).className = "two";
-                    break;
-                case 3:
-                    /*document.write('Case Three: ' + result);*/
-                    document.getElementById(boxId).className = "three";
-                    /*$('"#" + boxId').attr('class' , 'three');*/
-                    break;
-                default:
-                    document.write('switch case Not One, Two, or Three ' + result);//class not changed
-                    break;
-            } 
+            if(result == 1){
+                        $("#c").removeClass();
+                        $("#c").addClass("one"); 
+            } else if(result == 2){
+                        $("#c").removeClass(); 
+                        $("#c").addClass("two");
+            } else {
+                        $("#c").removeClass();
+                        $("#c").addClass("three");                     
+            }
+            console.log(" box 3 result: " + result);
+                    
+         return result;
 
-            return result;
-        }
+    }//end of chgBoxColor3
 
-        function myRandomNumber()
-        {
+    function myRandomNumber()
+    {
             var result = Math.floor((Math.random() * 10) + 1);
             /*document.write("random generator: " + result);*/
             return result;
-        }
+    }
 
-        function setWinOrLoseMsg(array_BoxColors)
-        {
-            /*document.write(" SetWinOrLoseMsg array(1)= " + array_BoxColors[1] + " " +
-                array_BoxColors[2] + " " + array_BoxColors[3]);*/
-            if ((array_BoxColors[1] == array_BoxColors[2]) &&
-                (array_BoxColors [2] == array_BoxColors[3])) {
+    function setWinOrLoseMsg(boxColor1, boxColor2, boxColor3)
+    {
+            if ((boxColor1 == boxColor2) &&
+                (boxColor2 == boxColor3))
+            {
                  /*document.getElementById("msg").innerHTML = "Congratulations, you won!";*/
                 $("#msg").text("Congratulations, you won!");
             } else {
                  /*document.getElementById("msg").innerHTML = "Sorry, try again!";*/
                 $("#msg").text("Sorry, try again!");
             }
-        }//end of setWinOrLoseMsg
+    }//end of setWinOrLoseMsg
 
-        function startProcess()
-        {
+    function startProcess()
+    {
             checkButtonHover();
-                   
             
-            var array_BoxColors = [0,0,0,0];//declare array for storing box color results
-
-            for (var box = 1; box <= 3; box++)//process the three text boxes
+            for  (var i=1; i <= 10; i++)
             {
-                var boxId = setBoxId(box);//set id value for the text box that you're processsing
-                               
-                for ( var i = 1; i <= 10; i++)//run change box color function 10X 
-                {
-                    var colorOfBox = chgBoxColor(boxId);//returns 1,2,or 3 based on what color set
-                    array_BoxColors[box] = colorOfBox;                             
-                } 
-            }//end of process text box loop
-            /*document.write("*** array values:  " + array_BoxColors[1] + " " + array_BoxColors[2]
-                + " " + array_BoxColors[3] + " *** ");*/
-
-            setWinOrLoseMsg(array_BoxColors);//display win or lose msg based on text box colors 
+                var boxColor1 = chgBoxColor1();
+            };
             
-                            
-        }//end of startProcess
+            for  (var i=1; i <= 10; i++)
+            {
+                var boxColor2 = chgBoxColor2();
+            };
+
+            for  (var i=1; i <= 10; i++)
+            {
+                var boxColor3 = chgBoxColor3();
+            };
+                 
+
+           setWinOrLoseMsg(boxColor1, boxColor2, boxColor3); 
+                   
+    }//end of startProcess
 
     function checkButtonHover() 
     {
             $("#btn").hover(function()
             {
-                alert("You entered hover!");
                 $("#btn").text("SPIN NOW");
                 $("#btn").css(
                     {
@@ -104,10 +122,24 @@
                     })
             });//end of button hover JQuery event handler    
     }//end of checkButtonHover      
+
+$(document).ready(function () {
+    $("button").click(function () {
+        $("*").fadeOut(2000);
+        });
+        /*$("p").hide().delay(2000).text("Goodbye").fadeIn(2000);*/
+    });
     
+$(window).on('beforeunload', function () {
+    return 'Are you sure you want to leave?';
+});
+
+
+     
     function onExit()
     {
-        return "Goodbye!...";//this never displays in W3Schools, or in my code!
+        $("p").text("Goodbye");
+        return "Goodbye!...";//this mgs never displays in W3Schools, or in my code!
     }
            
 $(document).ready(function()

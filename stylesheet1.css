@@ -27,3 +27,17 @@
     font-size: 20px;
     background-color: lightgreen;
 }
+#btnclose {
+    width: 15%; /* setting the width */
+    margin: 0 auto; /*this together with display: block: centers it*/
+    border: solid 8px black;
+    padding: 20px 20px;
+    display: block;
+    font-size: 20px;
+    background-color: lightblue;
+}
+#closemsg {
+    font-size: 50px;
+    display: block;
+    margin: 0 auto;
+}
